@@ -1,4 +1,4 @@
-OBJS=ppe.o bt.o
+OBJS=ppe.o bt.o dir.o
 NAME=obj
 FLAGS=-g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=103 -I /usr/share/arduino/hardware/arduino/cores/arduino/ -I /usr/share/arduino/hardware/arduino/variants/standard/ -I/usr/share/arduino/libraries/{EEPROM,Esplora,Ethernet,Firmata,GSM,LiquidCrystal,Robot_Control,Robot_Motor,SD,Servo,SoftwareSerial,SPI,Stepper,TFT,WiFi,Wire}
 PORT=/dev/ttyUSB0
