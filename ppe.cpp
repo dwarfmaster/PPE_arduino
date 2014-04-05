@@ -1,7 +1,10 @@
 #include "Arduino.h"
+#include "dir.hpp"
 
 void setup();
 void loop();
+
+Dir dir;
 
 void setup()
 {
@@ -19,11 +22,12 @@ void loop()
         if((c & 0xF0) == 0x50) {
             c &= 0x0F;
             switch(c) {
-                case 0x00: Serial.print(" Turning left ");   break;
-                case 0x01: Serial.print(" Turning right ");  break;
-                case 0x02: Serial.print(" Stopping ");       break;
-                case 0x03: Serial.print(" Moving forward "); break;
-                case 0x04: Serial.print(" Alert ! ");        break;
+                case 0x00: dir.left();   break;
+                case 0x01: dir.right();  break;
+                case 0x02: dir.center(); break;
+                case 0x03: Serial.print(" Stopping ");       break;
+                case 0x04: Serial.print(" Moving forward "); break;
+                case 0x05: Serial.print(" Alert ! ");        break;
                 default:   Serial.print(" Invalid ");        break;
             }
         }
