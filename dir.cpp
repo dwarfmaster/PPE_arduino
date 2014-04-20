@@ -20,6 +20,7 @@ void Dir::right()
         move(1);
     else
         move(2);
+    m_st = 1;
 }
 
 void Dir::left()
@@ -30,6 +31,7 @@ void Dir::left()
         move(-1);
     else
         move(-2);
+    m_st = 2;
 }
 
 void Dir::center()
@@ -40,6 +42,7 @@ void Dir::center()
         move(-1);
     else
         move(1);
+    m_st = 0;
 }
 
 void Dir::move(int nb)
@@ -55,7 +58,7 @@ void Dir::move(int nb)
     for(int i = 0; i < steps; ++i) {
         for(int j = 2; j < 6; ++j)
             digitalWrite(j, LOW);
-        digitalWrite(act, HIGH);
+        digitalWrite(act + 2, HIGH);
 
         if(dir == 1) {
             ++act;
@@ -67,7 +70,7 @@ void Dir::move(int nb)
             act %= 4;
         }
 
-        delay(50);
+        delay(250);
     }
 }
 
