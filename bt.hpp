@@ -23,6 +23,7 @@ class Bluetooth
 
 	private:
 		SoftwareSerial m_btcard;
+        bool m_connected;
 };
 
 #endif//DEF_BLUETOOTH

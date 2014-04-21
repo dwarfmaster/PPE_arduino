@@ -8,7 +8,7 @@ $(NAME).hex : $(OBJS)
 	cd core && touch tmp.o tmp.a
 	cd core && make clean
 	cd core && make
-	avr-gcc -Os -Wl,--gc-sections -mmcu=atmega328p -o $(NAME).elf $^ ./core/core.a -L core -lm
+	avr-g++ -Os -Wl,--gc-sections -mmcu=atmega328p -o $(NAME).elf $^ ./core/core.a -L core -lm
 	avr-objcopy -O ihex -R .eeprom $(NAME).elf $(NAME).hex
 
 %.o : %.cpp

@@ -1,7 +1,7 @@
 FLAGS=-Wall -Wextra
 CXXFLAGS=$(FLAGS) -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=103 -I /usr/share/arduino/hardware/arduino/cores/arduino/ -I /usr/share/arduino/hardware/arduino/variants/standard/
 CFLAGS=$(FLAGS) -g -Os -w -fno-exceptions -fdata-sections -mmcu=atmega328p -DF_CPU=16000000L -DARDUINO=103 -I /usr/share/arduino/hardware/arduino/cores/arduino/ -I /usr/share/arduino/hardware/arduino/variants/standard/
-FILES=WString.o wiring_digital.o wiring.o wiring_analog.o WInterrupts.o Tone.o Print.o main.o HardwareSerial.o wiring_shift.o wiring_pulse.o Print.o WMath.o
+FILES=WString.o wiring_digital.o wiring.o wiring_analog.o WInterrupts.o Tone.o Print.o main.o HardwareSerial.o wiring_shift.o wiring_pulse.o Print.o WMath.o SoftwareSerial.o
 
 
 all : $(FILES)
@@ -12,6 +12,9 @@ all : $(FILES)
 
 %.o : /usr/share/arduino/hardware/arduino/cores/arduino/%.cpp
 	avr-g++ $(CXXFLAGS) -c $< -o $@
+
+SoftwareSerial.o : /usr/share/arduino/libraries/SoftwareSerial/SoftwareSerial.cpp
+	avr-g++ -I /usr/share/arduino/libraries/SoftwareSerial/ $(CXXFLAGS) -c $< -o $@
 
 clean :
 	rm -vf *.o
